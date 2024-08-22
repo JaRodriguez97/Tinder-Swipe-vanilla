@@ -11,14 +11,14 @@ body {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   display: grid;
   place-content: center;
-  min-height: 100vh;
+  min-height: 100svh;
   overflow: hidden;
   user-select: none;
   background: #dadee3;
 }
 
 main {
-  height: 100vh;
+  height: 100svh;
   width: 90vw;
   display: flex;
   filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
