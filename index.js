@@ -57,17 +57,19 @@ let onEnd = () => {
     const goRight = pullDeltaX > 0;
 
     actualCard.classList.add(goRight ? "go-right" : "go-left");
-    actualCard.addEventListener("trasitionend", () => actualCard.remove());
+    actualCard.addEventListener("transitionend", () => actualCard.remove());
   } else {
-    actualCard.classList.add("reset");
     actualCard.classList.remove("go-left", "go-right");
+    actualCard.classList.add("reset");
 
     actualCard
       .querySelectorAll(".choice")
       .forEach((element) => (element.style.opacity = 0));
   }
 
-  actualCard.addEventListener("transitionend", () => {
+  actualCard.addEventListener("transitionend", (e) => {
+    if (e.propertyName !== "transform") return;
+
     actualCard.removeAttribute("style");
     actualCard.classList.remove("reset");
 
@@ -75,6 +77,10 @@ let onEnd = () => {
 
     pullDeltaX = 0;
   });
+
+  actualCard
+    .querySelectorAll(".choice")
+    .forEach((element) => (element.style.opacity = 0));
 };
 
 document.addEventListener("mousedown", startDrag);
